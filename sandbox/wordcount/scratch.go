@@ -1,4 +1,4 @@
-package main
+package wordcount
 
 import (
 	"strings"
@@ -11,7 +11,7 @@ import (
 // 	BuildWordCountMap("hello world world")
 // 	BuildWordCountMap("hello hello there there world world world")
 // }
-func BuildWordCountMap(inputString string) map[string] int{
+func BuildWordCountMap(inputString string) (map[string]int) {
 
 	var words = strings.Fields(inputString)
 	var wordCountMap = make(map[string]int)
@@ -28,4 +28,5 @@ func BuildWordCountMap(inputString string) map[string] int{
 	}
 
 	return wordCountMap
+
 }
