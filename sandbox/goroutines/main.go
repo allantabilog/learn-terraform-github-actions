@@ -46,7 +46,7 @@ func main_1() {
 	}
 }
 
-func main() {
+func main_4() {
 	channel := make(chan int)
 	quit := make(chan int)
 	go func() {
@@ -58,4 +58,33 @@ func main() {
 	fibonacci.FibWithSelect(channel, quit)
 
 
+}
+
+func display(text string){
+	for i:=0; i<6;i++ {
+		time.Sleep(10 * time.Second)
+		fmt.Println(text)
+	}
+}
+func main_3() {
+	fmt.Println("Running...")
+	go display("Welcome")
+	//go display("Geeks for geeks")
+}
+
+func main(){
+	messages := make(chan string, 3)
+
+	messages <- "one"
+	messages <- "two"
+	messages <- "three"
+
+	go func(messages *chan string){
+		fmt.Println("Entering the goroutine")
+		for {
+			fmt.Println(<- *messages)
+		}
+	}(&messages)
+	time.Sleep(10 * time.Second)
+	fmt.Println("Done.")
 }
