@@ -1,0 +1,24 @@
+// good old trace semantics of concurrent programs:)
+// this here is an actual real-world trace
+
+generateIntegers() goroutine sent value [0] to the channel
+Worker ID[1] received value [0] from the channel
+generateIntegers() goroutine sent value [1] to the channel
+Worker ID[2] received value [1] from the channel
+generateIntegers() goroutine sent value [2] to the channel
+Worker ID[3] received value [2] from the channel
+generateIntegers() goroutine sent value [3] to the channel
+generateIntegers() goroutine sent value [4] to the channel
+generateIntegers() goroutine sent value [5] to the channel
+Worker ID[1] received value [3] from the channel
+generateIntegers() goroutine sent value [6] to the channel
+Worker ID[2] received value [4] from the channel
+Worker ID[3] received value [5] from the channel
+generateIntegers() goroutine sent value [7] to the channel
+generateIntegers() goroutine sent value [8] to the channel
+Worker ID[2] received value [6] from the channel
+Worker ID[1] received value [7] from the channel
+generateIntegers() goroutine sent value [9] to the channel
+Worker ID[3] received value [8] from the channel
+Worker ID[1] received value [9] from the channel
+

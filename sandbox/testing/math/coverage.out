@@ -1,0 +1,4 @@
+mode: set
+sandbox/testing/math/math.go:3.30,5.2 1 1
+sandbox/testing/math/math.go:7.35,9.2 1 0
+sandbox/testing/math/math.go:11.44,13.2 1 0

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"sandbox/goroutines/fibonacci"
 	"time"
 )
@@ -72,7 +73,7 @@ func main_3() {
 	//go display("Geeks for geeks")
 }
 
-func main(){
+func main_5(){
 	messages := make(chan string, 3)
 
 	messages <- "one"
@@ -87,4 +88,32 @@ func main(){
 	}(&messages)
 	time.Sleep(10 * time.Second)
 	fmt.Println("Done.")
+}
+
+func printHello(ch chan int){
+	fmt.Println("Hello")
+	ch <- 2
+}
+
+func main(){
+	ch := make(chan int)
+
+	go func() {
+		fmt.Println("From main")
+		ch <- 1
+	}()
+
+	go printHello(ch)
+	i := <- ch
+	fmt.Println("Received from channel: ", i)
+}
+func main_6() {
+	go func() {
+		fmt.Println(rand.Intn(1001))
+		fmt.Println(rand.Intn(1001))
+		fmt.Println(rand.Intn(1001))
+		fmt.Println(rand.Intn(1001))
+
+	}()
+	time.Sleep(10 * time.Second)
 }

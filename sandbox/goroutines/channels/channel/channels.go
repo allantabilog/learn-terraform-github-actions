@@ -1,8 +1,8 @@
-package main
+package channel
 
 import "fmt"
 
-func main() {
+func ChannelMain() {
 	channel := make(chan int) // essentially a "rendezvous" channel
 	limit := 10
 	go generateInts(channel, limit)
