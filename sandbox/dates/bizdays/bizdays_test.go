@@ -35,6 +35,8 @@ func TestBizDays_ArbitraryStartDates(t *testing.T) {
 	assert.True(true)
 
 	testDate_Wed, _ := time.Parse(time.RFC822, "16 Feb 22 14:00 AEST")
+	testDate_Sat, _ := time.Parse(time.RFC822, "19 Feb 22 14:00 AEST")
+	testDate_Sun, _ := time.Parse(time.RFC822, "20 Feb 22 14:00 AEST")
 
 	testCases := []struct {
 		description  string
@@ -42,9 +44,14 @@ func TestBizDays_ArbitraryStartDates(t *testing.T) {
 		daysFrom     int
 		expectedDate time.Time
 	}{
+		{"Wed plus 0 biz day", testDate_Wed, 0, testDate_Wed},
 		{"Wed plus 1 biz day", testDate_Wed, 1, testDate_Wed.AddDate(0, 0, 1)},
 		{"Wed plus 2 biz days", testDate_Wed, 2, testDate_Wed.AddDate(0, 0, 2)},
 		{"Wed plus 3 biz days", testDate_Wed, 3, testDate_Wed.AddDate(0, 0, 5)},
+		{"Sat plus 2 biz days", testDate_Sat, 2, testDate_Sat.AddDate(0, 0, 3)},
+		{"Sat plus 1 biz days", testDate_Sat, 1, testDate_Sat.AddDate(0, 0, 2)},
+		{"Sun plus 1 biz days", testDate_Sun, 1, testDate_Sun.AddDate(0, 0, 1)},
+		{"Sun plus 2 biz days", testDate_Sun, 2, testDate_Sun.AddDate(0, 0, 2)},
 	}
 
 	for _, testCase := range testCases {
