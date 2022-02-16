@@ -1,6 +1,7 @@
 package bizdays
 
 import (
+	"fmt"
 	assert2 "github.com/stretchr/testify/assert"
 	"testing"
 	"time"
@@ -86,4 +87,26 @@ func TestBizDays_AcceptanceTests(t *testing.T) {
 		assert.True(BizDaysFrom(testCase.startDate, testCase.daysFrom).Equal(testCase.expectedDate), testCase.description)
 		assert.True(BizDaysFrom(testCase.startDate, testCase.daysFrom).Weekday() == testCase.expectedDayOfWeek)
 	}
+}
+
+func TestBizDays_EdgeCases(t *testing.T) {
+
+	testStartDate, _ := time.Parse(time.RFC822, "18 Feb 22 14:00 AEST")
+
+	testCases := []struct {
+		description       string
+		startDate         time.Time
+		daysFrom          int
+		expectedDate      time.Time
+		expectedDayOfWeek time.Weekday
+	}{
+		{"Fri plus 0 biz day", testStartDate, 0, testStartDate, time.Friday},
+		{"Negative biz days", testStartDate, -1, testStartDate, time.Friday},
+	}
+
+	for _, testCase := range testCases {
+		assert2.True(t, BizDaysFrom(testCase.startDate, testCase.daysFrom).Equal(testCase.expectedDate), testCase.description)
+	}
+
+	fmt.Println(BizDaysFrom(time.Now(), -1))
 }
