@@ -12,19 +12,20 @@ func TestBizDaysFrom(t *testing.T) {
 
 	assert.True(true)
 
+	startDate, _ := time.Parse(time.RFC822, "21 Feb 22 12:00 AEST")
+
 	var testCases = []struct {
 		description  string
 		inputDate    time.Time
 		daysFrom     int
 		expectedDate time.Time
 	}{
-		{"1 biz day from today", time.Now(), 1, time.Now().AddDate(0, 0, 1)},
-		{"2 biz days from today", time.Now(), 2, time.Now().AddDate(0, 0, 2)},
-		{"3 biz days from today", time.Now(), 3, time.Now().AddDate(0, 0, 3)},
-		{"4 biz days from today", time.Now(), 4, time.Now().AddDate(0, 0, 6)},
-		{"5 biz days from today", time.Now(), 5, time.Now().AddDate(0, 0, 7)},
+		{"1 biz day from today", startDate, 1, startDate.AddDate(0, 0, 1)},
+		{"2 biz days from today", startDate, 2, startDate.AddDate(0, 0, 2)},
+		{"3 biz days from today", startDate, 3, startDate.AddDate(0, 0, 3)},
+		{"4 biz days from today", startDate, 4, startDate.AddDate(0, 0, 4)},
+		{"5 biz days from today", startDate, 5, startDate.AddDate(0, 0, 7)},
 	}
-
 	for _, testCase := range testCases {
 		assert.True(BizDaysFrom(testCase.inputDate, testCase.daysFrom).Equal(testCase.expectedDate), testCase.description)
 	}
@@ -110,3 +111,5 @@ func TestBizDays_EdgeCases(t *testing.T) {
 
 	fmt.Println(BizDaysFrom(time.Now(), -1))
 }
+
+func
