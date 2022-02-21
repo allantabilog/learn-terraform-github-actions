@@ -102,7 +102,7 @@ func TestBizDays_EdgeCases(t *testing.T) {
 		expectedDayOfWeek time.Weekday
 	}{
 		{"Fri plus 0 biz day", testStartDate, 0, testStartDate, time.Friday},
-		{"Negative biz days", testStartDate, -1, testStartDate, time.Friday},
+		{"Negative biz days", testStartDate, -1, testStartDate.AddDate(0, 0, -1), time.Thursday},
 	}
 
 	for _, testCase := range testCases {
@@ -112,4 +112,25 @@ func TestBizDays_EdgeCases(t *testing.T) {
 	fmt.Println(BizDaysFrom(time.Now(), -1))
 }
 
-func
+func TestBizDays_NegativeParam(t *testing.T) {
+	testStartDate, _ := time.Parse(time.RFC822, "21 Feb 22 14:00 AEST")
+
+	testCases := []struct {
+		description       string
+		startDate         time.Time
+		daysFrom          int
+		expectedDate      time.Time
+		expectedDayOfWeek time.Weekday
+	}{
+		{"Mon plus 1 biz day", testStartDate, 1, testStartDate.AddDate(0, 0, 1), time.Tuesday},
+		{"Mon plus 5 biz days", testStartDate, 5, testStartDate.AddDate(0, 0, 7), time.Monday},
+		{"Mon plus 0 biz day", testStartDate, 0, testStartDate, time.Monday},
+		{"Mon minus 1 biz day", testStartDate, -1, testStartDate.AddDate(0, 0, -3), time.Friday},
+		{"Mon minus 2 biz days", testStartDate, -2, testStartDate.AddDate(0, 0, -4), time.Thursday},
+	}
+
+	for _, testCase := range testCases {
+		assert2.True(t, BizDaysFrom(testCase.startDate, testCase.daysFrom).Equal(testCase.expectedDate), testCase.description)
+	}
+
+}
