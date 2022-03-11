@@ -28,8 +28,10 @@ func (p *Person) updateLastName(newLastName string) {
 	p.lastName = newLastName
 }
 
-func main(){
+func main() {
 	struct_sandbox.StructTest()
+	struct_sandbox.WorkspaceTest()
+	fmt.Println(struct_sandbox.WorkspaceTest2())
 }
 
 func test_1() {

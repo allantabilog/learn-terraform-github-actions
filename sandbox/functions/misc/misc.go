@@ -1,24 +1,29 @@
-package main
+package misc
 
 import (
 	"fmt"
 	"math"
 )
 
+func JoelMain() {
+	for range [2]int{} {
+		fmt.Println("Good stuff.")
+	}
+}
+
 // function that takes a function as a parameter
 func compute(fn func(float64, float64) float64) float64 {
 	return fn(3, 4)
 }
-func main() {
+
+func anonymousFunc() {
 	hypotenuse := func(x, y float64) float64 {
-		return math.Sqrt(x * x + y * y)
+		return math.Sqrt(x*x + y*y)
 	}
 	fmt.Println(hypotenuse(5, 12))
 	fmt.Println(compute(hypotenuse))
 	fmt.Println(compute(math.Pow))
 }
-
-
 
 func greeting(name string) string {
 	return "Hello.there" + name
