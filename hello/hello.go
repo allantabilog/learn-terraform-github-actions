@@ -2,20 +2,33 @@ package main
 
 import (
 	"fmt"
-	"log"
+	"time"
 
-	"example.com/greetings"
+	//"log"
+
+	//"example.com/greetings"
+	"math/rand"
+	"strings"
 )
 
 func main() {
-	log.SetPrefix("greetings: ")
-	log.SetFlags(0)
 
-	names := []string{"Gladys", "Sadie", "Joy", "Lonely"}
-	messages, err := greetings.Hellos(names)
-	if err != nil {
-		log.Fatal(err)
+	fmt.Println(generateLongString())
+}
+
+func generateLongString() string {
+	var longString string
+
+	longString = "rule name: " + strings.Repeat("_long_rule_name_ ", 100)
+
+	return longString
+}
+func testFunc() {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+
+	if rnd := r.Intn(50); rnd >= 50 {
+		fmt.Printf("%d is GE 50", rnd)
+	} else {
+		fmt.Printf("%d is LT 50", rnd)
 	}
-
-	fmt.Println(messages)
 }

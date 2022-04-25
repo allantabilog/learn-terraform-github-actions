@@ -5,6 +5,37 @@ import (
 	"math"
 )
 
+type flt func(int) bool
+
+func IsOdd(n int) bool {
+	if n%2 == 0 {
+		return false
+	}
+	return true
+}
+
+func IsEven(n int) bool {
+	if n%2 == 0 {
+		return true
+	}
+	return false
+}
+
+func Filter(slice []int, f flt) []int {
+	var res []int
+	for _, val := range slice {
+		if f(val) {
+			res = append(res, val)
+		}
+	}
+	return res
+
+}
+
+func IsEvenV2(n int) bool {
+	return n%2 == 0
+}
+
 func JoelMain() {
 	for range [2]int{} {
 		fmt.Println("Good stuff.")

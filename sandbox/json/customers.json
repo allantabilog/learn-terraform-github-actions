@@ -1,0 +1,30 @@
+{
+  "customers": [
+    {
+      "name": "Elliot",
+      "type": "Reader",
+      "age": 23,
+      "role_id": 1,
+      "social": {
+        "facebook": "https://facebook.com",
+        "twitter": "https://twitter.com"
+      },
+      "metadata_key1": "metadata_value1",
+      "metadata_key2": "metadata_value2",
+      "nested_key": {
+        "nested_subkey": "nested_value"
+      }
+    },
+    {
+      "name": "Fraser",
+      "type": "Author",
+      "age": 17,
+      "role_id": 1,
+      "social": {
+        "facebook": "https://facebook.com",
+        "twitter": "https://twitter.com"
+      },
+      "metadata_key1": "metadata_value1"
+    }
+  ]
+}

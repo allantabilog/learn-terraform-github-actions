@@ -6,6 +6,7 @@ import (
 	"github.com/jackc/pgx/v4/pgxpool"
 	"log"
 	"os"
+	"postgres-example/sample"
 	"time"
 )
 
@@ -13,7 +14,8 @@ const DatabaseUrl = "postgres://postgres:postgres@localhost:5438"
 
 func main() {
 	//basicQuery()
-	executeFunction()
+	//executeFunction()
+	sample.SampleMain()
 
 }
 
