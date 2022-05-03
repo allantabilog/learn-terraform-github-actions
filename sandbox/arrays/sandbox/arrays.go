@@ -1,8 +1,14 @@
 package sandbox
 
-import "fmt"
+import (
+	"fmt"
+)
 
-func Main(){
+func Main() {
+
+}
+
+func Main2() {
 	s := []int{2, 3, 5, 7, 11, 13}
 	printSlice(s)
 
@@ -25,22 +31,22 @@ func Main(){
 	printSlice(a)
 }
 
-func printSlice(s []int){
+func printSlice(s []int) {
 	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
 }
-func Main_Slices(){
-	q := []int{2,3,5,7,11,13}
+func Main_Slices() {
+	q := []int{2, 3, 5, 7, 11, 13}
 	fmt.Println(q)
 
 	r := []bool{true, false, true, true, false, true}
 	fmt.Println(r)
 
-	s := []struct{
-		i int 
-		b bool 
+	s := []struct {
+		i int
+		b bool
 	}{
-		{2,true},
-		{3,false},
+		{2, true},
+		{3, false},
 		{5, true},
 		{7, true},
 		{11, false},
@@ -49,7 +55,7 @@ func Main_Slices(){
 	fmt.Println(s)
 
 }
-func Main_ArraysSlices(){
+func Main_ArraysSlices() {
 	fmt.Println("this should work")
 
 	var a [2]string
@@ -58,7 +64,7 @@ func Main_ArraysSlices(){
 
 	fmt.Println(a[0], a[1])
 
-	primes := [6]int {2,3,5,7,11,13}
+	primes := [6]int{2, 3, 5, 7, 11, 13}
 	fmt.Println(primes)
 
 	// a slice

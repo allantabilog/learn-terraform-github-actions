@@ -1,4 +1,4 @@
-package main
+package mux
 
 import (
 	"net/http"
@@ -18,7 +18,7 @@ func TestIndexHandler(t *testing.T) {
 		w:              httptest.NewRecorder(),
 		expectedStatus: http.StatusOK,
 	},
-}
+	}
 	for _, test := range tests {
 		test := test
 		t.Run(test.name, func(t *testing.T) {

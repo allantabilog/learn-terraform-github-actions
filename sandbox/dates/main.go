@@ -6,11 +6,46 @@ import (
 	"time"
 )
 
+type Workspace struct {
+	WorkspaceID int
+	Status      string
+}
+
 func main() {
-	dateMain()
+	w1 := Workspace{WorkspaceID: 92900, Status: "IN_PREPARATION"}
+	w2 := Workspace{WorkspaceID: 92900, Status: "ABANDONED"}
+	fmt.Println(w1.IsOpen())
+	fmt.Println(w2.IsOpen())
+}
+
+func (workspace Workspace) IsOpen() bool {
+	return workspace.Status != "ABANDONED" && workspace.Status != "SETTLED"
 }
 
 func dateMain() {
+	today := time.Now()
+	settlementDate1 := today.AddDate(0, 0, 5)
+	settlementDate2 := today.AddDate(0, 0, 7)
+	settlementDate3 := today.AddDate(0, 0, 9)
+
+	var datesToTest []time.Time
+
+	datesToTest = append(datesToTest, settlementDate1)
+	datesToTest = append(datesToTest, settlementDate2)
+	datesToTest = append(datesToTest, settlementDate3)
+
+	for _, dateToTest := range datesToTest {
+		fmt.Printf("%s within 7 days (%s)? %v\n", dateToTest, today.AddDate(0, 0, 7), withinDays(dateToTest, 7))
+	}
+
+}
+
+func withinDays(dateToTest time.Time, days int) bool {
+	today := time.Now()
+	todayPlusNDays := today.AddDate(0, 0, days)
+	return (dateToTest.Equal(today) || dateToTest.After(today)) && (dateToTest.Equal(todayPlusNDays) || dateToTest.Before(todayPlusNDays))
+}
+func dateMain1() {
 	bizDay := BizDaysFrom(time.Now(), 5)
 	fmt.Println("5 biz days from today is : ", dateInfo(bizDay))
 	bizDay = BizDaysFrom(time.Now(), 4)

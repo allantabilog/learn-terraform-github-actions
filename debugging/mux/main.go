@@ -1,4 +1,4 @@
-package main
+package mux
 
 import (
 	"fmt"
@@ -22,19 +22,19 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(message))
 }
 
-func main(){
-	serverAddress :=  ":8080"
-	l := log.New(os.Stdout, "sample-srv", log.LstdFlags | log.Lshortfile)
+func muxMain() {
+	serverAddress := ":8080"
+	l := log.New(os.Stdout, "sample-srv", log.LstdFlags|log.Lshortfile)
 	m := mux.NewRouter()
 
 	m.HandleFunc("/", indexHandler)
 
-	srv :=  &http.Server{
-		Addr: serverAddress,
-		ReadTimeout: readTimeout,
+	srv := &http.Server{
+		Addr:         serverAddress,
+		ReadTimeout:  readTimeout,
 		WriteTimeout: writeTimeout,
-		IdleTimeout: idleTimeout,
-		Handler: m,
+		IdleTimeout:  idleTimeout,
+		Handler:      m,
 	}
 
 	l.Println("server started")
