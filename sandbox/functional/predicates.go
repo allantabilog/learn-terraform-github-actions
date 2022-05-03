@@ -25,14 +25,15 @@ func all(workspace Workspace, documentType string, documentStatus string) bool {
 		}
 	}
 
-	// what if documentsBySubscriber is empty?
+	if len(documentsBySubscriber) == 0 {
+		return false
+	}
+
 	for _, doc := range documentsBySubscriber {
 		if doc.DocumentStatus != documentStatus {
 			return false
 		}
-		return true
 	}
 
-	return false
+	return true
 }
-
