@@ -1,4 +1,4 @@
-package main
+package shape
 
 import (
 	"fmt"
@@ -26,7 +26,7 @@ func calculateArea(s Shape) float64 {
 	return s.area()
 }
 
-func main() {
+func shapeMain() {
 	circle := Circle{x: 0, y: 0, radius: 5}
 	rect := Rectangle{width: 10, height: 20}
 

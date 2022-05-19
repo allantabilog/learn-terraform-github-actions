@@ -29,18 +29,15 @@ func (p *Person) updateLastName(newLastName string) {
 }
 
 func main() {
-	//struct_sandbox.StructTest()
-	//struct_sandbox.WorkspaceTest()
+	fmt.Println("Scenario 1")
+	testRemoveDocumentFromWorkspaceWithOneMortgageDoc()
+	fmt.Println("Scenario 2")
+	testRemoveDocumentFromWorkspaceWithTwoMortgageDocs()
 
-	//fmt.Println(struct_sandbox.WorkspaceTest2())
-	//struct_sandbox.TestStructUpdate()
-	//testUpdateDocumentInWorkspace()
-	testRemoveDocumentFromWorkspace()
-	testAddDocumentToWorkspace()
 }
 
 func testUpdateDocumentInWorkspace() {
-	workspace := struct_sandbox.WorkspaceTest3()
+	workspace := struct_sandbox.WorkspaceWithTwoMortgageDocs()
 	fmt.Println(workspace)
 	fmt.Println("workspace documents: ")
 
@@ -53,9 +50,17 @@ func testUpdateDocumentInWorkspace() {
 	fmt.Println(workspace)
 }
 
-func testRemoveDocumentFromWorkspace() {
-	workspace := struct_sandbox.WorkspaceTest3()
-	fmt.Println(workspace)
+func testRemoveDocumentFromWorkspaceWithOneMortgageDoc() {
+	workspace := struct_sandbox.WorkspaceWithOneMortgageDocs()
+	//fmt.Println(workspace)
+
+	fmt.Println("Before removing Document: ", workspace)
+	struct_sandbox.RemoveDocument(workspace, 1)
+	fmt.Println("After removing document: ", workspace)
+}
+func testRemoveDocumentFromWorkspaceWithTwoMortgageDocs() {
+	workspace := struct_sandbox.WorkspaceWithTwoMortgageDocs()
+	//fmt.Println(workspace)
 
 	fmt.Println("Before removing Document: ", workspace)
 	struct_sandbox.RemoveDocument(workspace, 1)
@@ -63,7 +68,7 @@ func testRemoveDocumentFromWorkspace() {
 }
 
 func testAddDocumentToWorkspace() {
-	workspace := struct_sandbox.WorkspaceTest3()
+	workspace := struct_sandbox.WorkspaceWithTwoMortgageDocs()
 
 	fmt.Println("Before adding a Document: ", workspace)
 	struct_sandbox.AddDocument(workspace, 3)

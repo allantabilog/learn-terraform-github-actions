@@ -75,12 +75,25 @@ func WorkspaceTest2() *Workspace {
 	return &workspace
 }
 
-func WorkspaceTest3() *Workspace {
+func WorkspaceWithTwoMortgageDocs() *Workspace {
 	workspace := Workspace{}
 	workspace.WorkspaceId = 1
 	workspace.Documents = []Document{
-		{ID: 1, TypeId: 1, Name: "Mortgage document", Status: "Created"},
-		{ID: 2, TypeId: 2, Name: "Mortgage document", Status: "Created"},
+		{ID: 1, TypeId: 22, Name: "National Mortgage", Status: "Created"},
+		{ID: 2, TypeId: 22, Name: "National Mortgage", Status: "Created"},
+		{ID: 3, TypeId: 4, Name: "Lodgement Instructions", Status: "Created"},
+	}
+
+	return &workspace
+
+}
+
+func WorkspaceWithOneMortgageDocs() *Workspace {
+	workspace := Workspace{}
+	workspace.WorkspaceId = 1
+	workspace.Documents = []Document{
+		{ID: 1, TypeId: 22, Name: "National Mortgage", Status: "Created"},
+		{ID: 2, TypeId: 4, Name: "Lodgement instructions", Status: "Created"},
 	}
 
 	return &workspace
@@ -107,7 +120,7 @@ func UpdateDocumentStatusV2(workspace *Workspace, documentID int, documentStatus
 }
 
 func RemoveDocument(workspace *Workspace, documentID int) {
-	fmt.Printf("Removing document %d from workspace %d", documentID, workspace.WorkspaceId)
+	fmt.Printf("Removing document %d from workspace %d\n", documentID, workspace.WorkspaceId)
 
 	var documents []Document
 
@@ -116,7 +129,15 @@ func RemoveDocument(workspace *Workspace, documentID int) {
 			documents = append(documents, workspace.Documents[i])
 		}
 	}
-	workspace.Documents = documents
+	// if the last remaining document in the collection is a lodgement instruction, remove it
+	if len(documents) == 1 && documents[0].Name == "Lodgement instructions" {
+		fmt.Printf("Also removing lodgement instructions from workspace %d\n", workspace.WorkspaceId)
+		var emptyDocuments []Document
+		workspace.Documents = emptyDocuments
+	} else {
+		workspace.Documents = documents
+	}
+
 }
 
 func AddDocument(workspace *Workspace, id int) {
@@ -148,4 +169,24 @@ func TestStructUpdate() {
 
 func (a *A) updateB(n int) {
 	a.b.c = n
+}
+
+func WorkspaceTest4() *Workspace {
+	var documents []Document
+	documents = append(documents, Document{ID: 1, Name: "Mortgage Document", Status: "Created"})
+	workspace := Workspace{
+		WorkspaceId: 1, Address: Address{
+			StreetNumber: 1, StreetName: "Sesame",
+		}, Documents: documents,
+	}
+
+	return &workspace
+}
+
+func (document Document) String() string {
+	return fmt.Sprintf("Document: ID [%v] Type [%s] Status [%s]\n", document.ID, document.Name, document.Status)
+}
+
+func (workspace Workspace) String() string {
+	return fmt.Sprintf("Workspace: ID [%v] Documents: [%v]\n", workspace.WorkspaceId, workspace.Documents)
 }
