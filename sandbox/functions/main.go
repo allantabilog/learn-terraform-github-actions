@@ -11,6 +11,22 @@ import (
 
 func main() {
 
+	fmt.Println(strings.EqualFold("abc", "ABC"))
+	fmt.Println(strings.Contains("abc", "BC"))
+
+}
+
+func functionPointer() {
+	inc := increment
+
+	fmt.Println(inc(0))
+	fmt.Println(inc(1))
+	fmt.Println(inc(inc(inc(0))))
+}
+func increment(n int) int {
+	return n + 1
+}
+func runtimeCaller() {
 	where := func() {
 		_, file, line, _ := runtime.Caller(1)
 		log.Printf("%s:%d", file, line)
@@ -23,7 +39,6 @@ func main() {
 	fmt.Println("a: ", a)
 	fmt.Println("b: ", b)
 	where()
-
 }
 
 func factoryTester() {

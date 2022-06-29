@@ -22,4 +22,7 @@ func main() {
 		fmt.Println(option)
 	}
 
+	fmt.Println("go vet should report the next line")
+	fmt.Printf("a number: %s", 0)
+
 }

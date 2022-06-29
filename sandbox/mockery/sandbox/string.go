@@ -2,6 +2,12 @@ package sandbox
 
 type Stringer interface {
 	String() string
-	Add(a int, b int) int
 }
 
+type StringerImpl struct {
+	id int
+}
+
+func (receiver StringerImpl) String() string {
+	return "Hello from StringerImpl"
+}

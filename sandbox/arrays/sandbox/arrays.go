@@ -5,7 +5,39 @@ import (
 )
 
 func Main() {
+	sliceTests2()
 
+}
+
+func sliceTests2() {
+	a := make([]int, 5)
+
+	fmt.Println(len(a) == 5)
+	fmt.Println(cap(a) == 5)
+}
+
+func sliceTests1() {
+	var a [10]int
+
+	for i := 0; i < 10; i++ {
+		a[i] = i * 2
+	}
+
+	fmt.Println(a)
+	fmt.Println(a[:])
+	fmt.Println(a[:10])
+	fmt.Println(a[0:])
+
+}
+func InsertSlice(slice, sliceToInsert []string, index int) []string {
+	testSlice := []string{"0", "1", "2", "3"}
+	//testSliceToInsert := []string{"A", "B", "C"}
+
+	newSlice := make([]string, len(testSlice), cap(testSlice))
+
+	copy(newSlice, testSlice[1:index])
+
+	return newSlice
 }
 
 func Main2() {
