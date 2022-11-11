@@ -2,11 +2,16 @@ package main
 
 import (
 	"fmt"
-	"sandbox/arrays/sandbox"
 )
 
-func main(){
-	sandbox.Main()
+func main() {
+	//sandbox.Main()
+	Foo()
+}
+
+func Foo() {
+	x := 0
+	fmt.Println(x)
 }
 
 func main0() {

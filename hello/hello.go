@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 
@@ -13,7 +14,19 @@ import (
 
 func main() {
 
-	fmt.Println(generateLongString())
+	fmt.Printf("Error: %s", generateError().Error())
+}
+
+func generateError() error {
+	err := errors.New("Wrapped error")
+	return err
+}
+func disjunction(s string) string {
+	if s != "a" && s != "b" {
+		return "invalid"
+	} else {
+		return "valid"
+	}
 }
 
 func generateLongString() string {

@@ -7,6 +7,15 @@ import (
 
 type flt func(int) bool
 
+type Customer struct {
+	ID   int
+	Name string
+}
+
+func SetName(c *Customer) {
+	c.Name = "Default"
+}
+
 func IsOdd(n int) bool {
 	if n%2 == 0 {
 		return false
