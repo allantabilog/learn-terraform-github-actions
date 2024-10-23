@@ -1,0 +1,7 @@
+1. go:embed
+2. channels, waitgroups
+3. goroutines go func() {}
+4. setting up elastic search locally
+5. elastic search GO SDK 
+6. Testable code 
+7. Generating unit tests with vscode plugins?

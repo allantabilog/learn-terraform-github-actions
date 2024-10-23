@@ -1,0 +1,7 @@
+workspace_id,workspace_number,participant_id,subscriber_id,settlement_date_time,role
+646132,PEXA160646132,834031,601,9/29/16 17:00,Incoming Mortgagee
+1638345,PEXA171638345,1979894,3905,9/11/17 17:00,Incoming Mortgagee
+1638345,PEXA171638345,1989341,3905,9/11/17 17:00,Mortgagee on Title
+1630628,PEXA171630628,1968296,3905,9/20/17 14:30,Mortgagee on Title
+1630628,PEXA171630628,2028972,3905,9/20/17 14:30,Incoming Mortgagee
+1678018,PEXA171678018,2038737,3905,10/3/17 17:00,Incoming Mortgagee
