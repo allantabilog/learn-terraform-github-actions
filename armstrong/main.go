@@ -3,13 +3,29 @@ package main
 import (
 	"fmt"
 	"math"
+	"os"
+	"strconv"
 )
 
 func main() {
 
-	tests := []int{153, 370, 371, 407, 9474, 9475}
+	// get a list of numbers from command line
+	args := os.Args[1:]
 
-	for _, test := range tests {
+	// if args list is empty just exit
+	if len(args) == 0 {
+		fmt.Println("No numbers provided. Exiting program")
+		return
+	}
+	// turn the list into a list of integers
+	var numbers []int
+	for _, arg := range args {
+		// turn the string into an integer
+		number, _ := strconv.Atoi(arg)
+		numbers = append(numbers, number)
+	}
+
+	for _, test := range numbers {
 		fmt.Printf("The number %v is %v\n", test, isArmstrongV2(test))
 	}
 }
