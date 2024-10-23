@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-
 	//"sandbox/maps/sandbox"
 )
 
@@ -16,7 +15,38 @@ var timeZone = map[string]int{
 
 func main() {
 	//sandbox.Main()
-	main1()
+	main2()
+}
+
+func main2() {
+	var counters = make(map[string]int, 10)
+	counters["a"] = 1
+	counters["b"] = 2
+	counters["c"] = 3
+	fmt.Printf("counters: %v\n", counters)
+
+	modelToMake := map[string]string{
+		"prius":    "toyota",
+		"camry":    "toyota",
+		"chevelle": "chevrolet",
+		"mustang":  "ford",
+	}
+
+	fmt.Printf("modelToMake: %v\n", modelToMake)
+	fmt.Println("prius==>", modelToMake["prius"])
+	fmt.Println("lexus==>", modelToMake["lexus"])
+
+	var make string = "tesla"
+	if carMake, ok := modelToMake[make]; ok {
+		fmt.Println("carMake==>", carMake)
+	} else {
+		fmt.Printf("carMake not found: %v", make)
+	}
+
+	for key, val := range modelToMake {
+		fmt.Printf("key: %v, val: %v\n", key, val)
+	}
+
 }
 
 func main1() {
