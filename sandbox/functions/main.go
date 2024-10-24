@@ -11,6 +11,15 @@ import (
 
 func main() {
 
+	fmt.Println(add(100, 1))
+
+}
+
+func add(a int, b int) int {
+	return a + b
+}
+
+func whereTest() {
 	where := func() {
 		_, file, line, _ := runtime.Caller(1)
 		log.Printf("%s:%d", file, line)
@@ -23,7 +32,6 @@ func main() {
 	fmt.Println("a: ", a)
 	fmt.Println("b: ", b)
 	where()
-
 }
 
 func factoryTester() {

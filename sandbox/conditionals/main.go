@@ -32,4 +32,8 @@ func main() {
 		fmt.Println("colour is not red not blue")
 	}
 
+	if false {
+		fmt.Println("1 is equal to 1")
+	}
+
 }
