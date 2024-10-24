@@ -23,8 +23,8 @@ func (f F) M() {
 	fmt.Println(f)
 }
 
-func Main() {
-	var i I 
+func MethodsMain() {
+	var i I
 
 	i = &T{"Hello"}
 	describe(i)
@@ -34,10 +34,8 @@ func Main() {
 	describe(i)
 	i.M()
 
-
 }
 
-
-func describe(i I){
+func describe(i I) {
 	fmt.Printf("(%v, %T)\n", i, i)
 }

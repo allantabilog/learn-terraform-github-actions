@@ -28,7 +28,7 @@ func (p *Person) updateLastName(newLastName string) {
 	p.lastName = newLastName
 }
 
-func main() {
+func main2() {
 	fmt.Println("Scenario 1")
 	testRemoveDocumentFromWorkspaceWithOneMortgageDoc()
 	fmt.Println("Scenario 2")
