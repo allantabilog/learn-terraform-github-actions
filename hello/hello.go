@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 
@@ -12,8 +13,39 @@ import (
 )
 
 func main() {
+	fmt.Println(sum(1, 2, 3, 4, 5))
+}
+func iife() {
 
-	fmt.Println(generateLongString())
+	result := func(word1, word2 string) string {
+		return word1 + " " + word2
+	}("hello", "world")
+	fmt.Println(result)
+}
+func sum(numbers ...int) int {
+	sum := 0
+	for _, n := range numbers {
+		sum += n
+	}
+	return sum
+}
+func sumNumber(numbers []int) int {
+	sum := 0
+	for _, n := range numbers {
+		sum += n
+	}
+	return sum
+}
+func generateError() error {
+	err := errors.New("Wrapped error")
+	return err
+}
+func disjunction(s string) string {
+	if s != "a" && s != "b" {
+		return "invalid"
+	} else {
+		return "valid"
+	}
 }
 
 func generateLongString() string {

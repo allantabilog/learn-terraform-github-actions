@@ -13,6 +13,17 @@ import (
 const defaultWord = "testWord"
 
 func main() {
+
+	var b bool
+	b = true
+	fmt.Printf("boolean value: %v", b)
+}
+
+func newInt(n int) *int {
+	return &n
+}
+
+func argsTest() {
 	// get command line arg
 	if len(os.Args) > 1 {
 		word := os.Args[1]

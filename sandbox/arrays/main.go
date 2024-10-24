@@ -2,11 +2,32 @@ package main
 
 import (
 	"fmt"
-	"sandbox/arrays/sandbox"
 )
 
-func main(){
-	sandbox.Main()
+func main() {
+	//sandbox.Main()
+	Foo()
+}
+
+func Foo() {
+	main1()
+}
+
+func main1() {
+	var x = []int{1, 2, 3}
+	x = append(x, 2)
+	fmt.Println(x)
+	y := x[1:2]
+	fmt.Println(y)
+	y[0] = 100
+	fmt.Println(y)
+	fmt.Println(x)
+	x = append(x, 200, 300, 400, 500)
+	fmt.Println(x)
+
+	for i, v := range x {
+		fmt.Println(i, v)
+	}
 }
 
 func main0() {

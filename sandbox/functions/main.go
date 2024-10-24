@@ -7,19 +7,58 @@ import (
 	"runtime"
 	"sandbox/functions/misc"
 	"strings"
+	"time"
 )
 
+const longForm = "Jan 2, 2006 at 3:04pm (AEST)"
+
 func main() {
+	t := time.Now()
+	fmt.Printf("Time: [%d]", t.UnixMilli())
 
-	fmt.Println(add(100, 1))
+	startDate := "Jul 28, 2022 at 6:07pm (AEST)"
+	endDate := "Jul 28, 2022 at 7:10pm (AEST)"
+
+	fmt.Println("Start: ", toUnixMillis(startDate))
+	fmt.Println("End: ", toUnixMillis(endDate))
+
+	//t2, _ := time.Parse(shortForm, "2013-Feb-03")
+	//fmt.Printf("Time string [%s] unixmillis [%d]", t2, t2.UnixMilli())
+}
+
+func toUnixMillis(dateStr string) int64 {
+	tLong, _ := time.Parse(longForm, dateStr)
+	fmt.Println("Time in str:", tLong)
+	fmt.Println("Time in unix millis:", tLong.UnixMilli())
+
+	return tLong.UnixMilli()
+}
+func test1() {
+	c := &misc.Customer{ID: 1}
+
+	misc.SetName(c)
+
+	fmt.Println(c)
+
+}
+func stringsTest() {
+
+	fmt.Println(strings.EqualFold("abc", "ABC"))
+	fmt.Println(strings.Contains("abc", "BC"))
 
 }
 
-func add(a int, b int) int {
-	return a + b
-}
+func functionPointer() {
+	inc := increment
 
-func whereTest() {
+	fmt.Println(inc(0))
+	fmt.Println(inc(1))
+	fmt.Println(inc(inc(inc(0))))
+}
+func increment(n int) int {
+	return n + 1
+}
+func runtimeCaller() {
 	where := func() {
 		_, file, line, _ := runtime.Caller(1)
 		log.Printf("%s:%d", file, line)

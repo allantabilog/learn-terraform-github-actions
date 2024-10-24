@@ -12,14 +12,39 @@ type Workspace struct {
 }
 
 func main() {
-	w1 := Workspace{WorkspaceID: 92900, Status: "IN_PREPARATION"}
-	w2 := Workspace{WorkspaceID: 92900, Status: "ABANDONED"}
-	fmt.Println(w1.IsOpen())
-	fmt.Println(w2.IsOpen())
+	strDate := "2022-08-04 10:00"
+	fmt.Println("Date: ", strDate)
+	tDate, err := time.Parse("2006-01-02 15:04", strDate)
+	if err != nil {
+		fmt.Println("Error parsing date: ", err)
+	}
+	fmt.Println(tDate)
+}
+
+func ExtractDateComponents() {
+	today := time.Now()
+	//tomorrow := today.AddDate(0, 0, 1)
+	tomorrow2 := today.AddDate(0, 0, 1)
+
+	todayYear, todayMonth, todayDay := today.Date()
+	//compareYear, compareMonth, compareDay := tomorrow.Date()
+	compareYear, compareMonth, compareDay := tomorrow2.Date()
+
+	var match bool
+	match = (todayYear == compareYear && todayMonth == compareMonth && todayDay == compareDay)
+
+	fmt.Println("Match: ", match)
 }
 
 func (workspace Workspace) IsOpen() bool {
 	return workspace.Status != "ABANDONED" && workspace.Status != "SETTLED"
+}
+
+func dateTest1() {
+	w1 := Workspace{WorkspaceID: 92900, Status: "IN_PREPARATION"}
+	w2 := Workspace{WorkspaceID: 92900, Status: "ABANDONED"}
+	fmt.Println(w1.IsOpen())
+	fmt.Println(w2.IsOpen())
 }
 
 func dateMain() {
